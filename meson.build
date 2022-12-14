@@ -1,7 +1,7 @@
 project(
 	'kanshi',
 	'c',
-	version: '1.3.0',
+	version: '1.3.1',
 	license: 'MIT',
 	meson_version: '>=0.59.0',
 	default_options: [
