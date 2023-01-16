@@ -115,7 +115,7 @@ quoted (with *"*) if they contain spaces.
 
 Maintained by Simon Ser <contact@emersion.fr>, who is assisted by other
 open-source contributors. For more information about kanshi development, see
-https://git.sr.ht/~emersion/kanshi.
+<https://git.sr.ht/~emersion/kanshi>.
 
 # SEE ALSO
 
