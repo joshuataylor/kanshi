@@ -16,6 +16,9 @@ kanshi - dynamic output configuration
 *-c, --config* <config>
 	Specifies a config file.
 
+*-l, --listen-fd* <fd>
+	Listen on the specified file descriptor for IPC.
+
 # DESCRIPTION
 
 kanshi is a Wayland daemon that automatically configures outputs.

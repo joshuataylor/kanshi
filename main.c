@@ -614,17 +614,28 @@ static const char usage[] = "Usage: %s [options...]\n"
 static const struct option long_options[] = {
 	{"help", no_argument, 0, 'h'},
 	{"config", required_argument, 0, 'c'},
+	{"listen-fd", required_argument, 0, 'l'},
 	{0},
 };
 
 int main(int argc, char *argv[]) {
 	const char *config_arg = NULL;
+	int listen_fd = -1;
 
 	int opt;
-	while ((opt = getopt_long(argc, argv, "hc:", long_options, NULL)) != -1) {
+	while ((opt = getopt_long(argc, argv, "hc:l:", long_options, NULL)) != -1) {
 		switch (opt) {
 		case 'c':
 			config_arg = optarg;
+			break;
+		case 'l':
+#if KANSHI_HAS_VARLINK
+			listen_fd = strtol(optarg, NULL, 10);
+#else
+			fprintf(stderr, "IPC support is disabled, "
+				"-l/--listen-fd is not supported\n");
+			return EXIT_FAILURE;
+#endif
 			break;
 		case 'h':
 			fprintf(stderr, usage, argv[0]);
@@ -654,7 +665,7 @@ int main(int argc, char *argv[]) {
 	};
 	int ret = EXIT_SUCCESS;
 #if KANSHI_HAS_VARLINK
-	if (kanshi_init_ipc(&state) != 0) {
+	if (kanshi_init_ipc(&state, listen_fd) != 0) {
 		ret = EXIT_FAILURE;
 		goto done;
 	}
