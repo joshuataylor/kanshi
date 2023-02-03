@@ -620,7 +620,9 @@ static const struct option long_options[] = {
 
 int main(int argc, char *argv[]) {
 	const char *config_arg = NULL;
+#if KANSHI_HAS_VARLINK
 	int listen_fd = -1;
+#endif
 
 	int opt;
 	while ((opt = getopt_long(argc, argv, "hc:l:", long_options, NULL)) != -1) {
