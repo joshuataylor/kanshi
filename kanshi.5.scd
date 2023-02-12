@@ -59,23 +59,23 @@ quoted (with *"*) if they contain spaces.
 	On *sway*(1) for example, *exec* can be used to move workspaces to the
 	right output:
 
-```
+	```
 	profile multihead {
 		output eDP-1 enable
 		output DP-1 enable transform 270
 		exec swaymsg workspace 1, move workspace to eDP-1
 	}
-```
+	```
 
 	Note that some extra care must be taken with outputs identified by an
 	output description as the real name may change:
 
-```
+	```
 	profile complex {
 		output "Some Other Company GTBZ 2525" mode 1920x1200
 		exec swaymsg workspace 1, move workspace to output '"Some Other Company GTBZ 2525"'
 	}
-```
+	```
 
 # OUTPUT DIRECTIVES
 
@@ -89,19 +89,19 @@ quoted (with *"*) if they contain spaces.
 
 	Examples:
 
-```
-		output HDMI-A-1 mode 1920x1080
-		output HDMI-A-1 mode 1920x1080@60Hz
-```
+	```
+	output HDMI-A-1 mode 1920x1080
+	output HDMI-A-1 mode 1920x1080@60Hz
+	```
 
 *position* <x>,<y>
 	Places the output at the specified position in the global coordinates space.
 
 	Example:
 
-```
-		output HDMI-A-1 position 1600,0
-```
+	```
+	output HDMI-A-1 position 1600,0
+	```
 
 *scale* <factor>
 	Scales the output by the specified scale factor.
