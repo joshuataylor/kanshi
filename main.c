@@ -238,6 +238,14 @@ static void apply_profile(struct kanshi_state *state,
 		return;
 	}
 
+    // if the profile name contains "anonymous", just return.
+    // stupid hacky workaround for when sometimes it doesn't have output for whatever
+    // reason when resuming from suspend/swayidle..
+    if (strstr(profile->name, "anonymous") != NULL) {
+        fprintf(stderr, "Unknown profile '%s'\n", profile->name);
+        return;
+    }
+
 	fprintf(stderr, "applying profile '%s'\n", profile->name);
 
 	struct kanshi_pending_profile *pending = calloc(1, sizeof(*pending));
